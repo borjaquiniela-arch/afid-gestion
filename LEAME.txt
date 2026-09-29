@@ -1,0 +1,39 @@
+A-fid gestion
+=============
+
+Programa de control horario y facturacion (Windows + Android).
+Misma base de datos para el ordenador y el telefono.
+
+Windows
+-------
+1. Instala Python 3 y marca "Add python.exe to PATH".
+2. Doble clic en lancer.bat
+   Se abre http://127.0.0.1:8765/
+
+Android (misma Wi-Fi)
+---------------------
+1. En el PC, doble clic en lancer-reseau.bat
+   Deja la ventana negra abierta.
+2. En el telefono, misma red Wi-Fi que el PC.
+3. Chrome > escribe la direccion que sale en la ventana, por ejemplo:
+   http://192.168.1.23:8765/
+4. Menu de Chrome (3 puntos) > "Anadir a la pantalla de inicio"
+   Queda como una aplicacion A-fid.
+
+Consultar facturas
+------------------
+PC y movil ven lo mismo: clientes, horas y PDFs.
+Si apagas el PC, el movil no podra conectar (el programa vive en el ordenador).
+
+Acceso desde fuera de casa
+--------------------------
+Opciones sencillas y gratuitas:
+- Tailscale o ZeroTier en el PC y en el movil (recomendado).
+- O abrir el puerto 8765 en el router (menos seguro).
+
+No es una app de Play Store: es la misma aplicacion web, instalable en Android.
+
+Datos
+-----
+Se guardan en data/tempofacture.db
+Remitente: A-fid comptabilite, Rue Es Cres 3, 2830 Courrendlin

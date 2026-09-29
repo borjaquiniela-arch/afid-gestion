@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: afid-gestion
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py --reseau --no-browser
+    envVars:
+      - key: AFID_PASSWORD
+        sync: false
+      - key: AFID_SECRET
+        generateValue: true
+      - key: AFID_DATA
+        value: /opt/render/project/src/data

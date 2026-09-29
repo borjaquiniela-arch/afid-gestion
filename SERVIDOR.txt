@@ -1,0 +1,46 @@
+Servidor + Android
+==================
+
+1) Subir el programa a un servidor (gratis)
+-------------------------------------------
+Opcion recomendada: Render.com
+
+1. Crea cuenta en https://render.com
+2. New + Web Service
+3. Sube esta carpeta o conecta un repositorio Git con estos archivos.
+4. Build: pip install -r requirements.txt
+   Start: python app.py --reseau --no-browser
+5. Environment:
+   AFID_PASSWORD = una contrasena tuya
+   AFID_SECRET = cualquier texto largo aleatorio
+6. Render te da una URL, por ejemplo:
+   https://afid-gestion.onrender.com
+
+En el PC abre esa URL en el navegador.
+En el movil, la app Android pide esa misma URL.
+
+Otras plataformas iguales: Railway.app, Fly.io, un VPS.
+Necesitas dejar el servicio encendido para que Windows y Android vean los mismos datos.
+
+
+2) App Android
+--------------
+Carpeta: android/
+
+1. Instala Android Studio: https://developer.android.com/studio
+2. Open > carpeta android
+3. Espera a que Gradle termine.
+4. Build > Build Bundle(s) / APK(s) > Build APK(s)
+5. El APK queda en android/app/build/outputs/apk/
+6. Copialo al telefono e instalalo (puede pedir "orígenes desconocidos").
+
+Al abrir la app:
+- pega la URL del servidor
+- introduce el mot de passe
+- ves facturas, clientes y horas, igual que en el PC
+
+
+3) Sin servidor de pago
+-----------------------
+Sigue funcionando en casa con lancer-reseau.bat
+y la misma app Android, poniendo http://IP-DEL-PC:8765/
