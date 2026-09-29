@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#16487a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="A-fid" />
+  <title>A-fid gestion</title>
+  <link rel="manifest" href="/static/manifest.json" />
+  <link rel="apple-touch-icon" href="/static/icon-192.png" />
+  <link rel="icon" href="/static/icon-192.png" />
+  <link rel="stylesheet" href="/static/style.css?v=6" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-logo">
+        <img src="/static/logo-sidebar.png?v=3" alt="A-Fid" />
+      </div>
+      <div class="brand-name">
+        <strong>A-fid gestion</strong>
+        <span>Temps & facturation</span>
+      </div>
+    </div>
+    <nav class="side-nav">
+      <button class="nav active" data-view="dashboard">Tableau de bord</button>
+      <button class="nav" data-view="temps">Temps</button>
+      <button class="nav" data-view="clients">Clients</button>
+      <button class="nav" data-view="factures">Factures</button>
+      <button class="nav" data-view="parametres">Parametres</button>
+    </nav>
+    <div class="sidebar-timer" id="sidebarTimer">
+      <p class="muted">Chronometre</p>
+      <div class="timer-display" id="timerDisplay">00:00:00</div>
+      <p id="timerClient" class="muted">Arrete</p>
+    </div>
+  </aside>
+
+  <main>
+    <header class="top">
+      <h1 id="pageTitle">Tableau de bord</h1>
+      <p id="pageSubtitle">Suivi de votre activite</p>
+    </header>
+
+    <section id="view-dashboard" class="view"></section>
+    <section id="view-temps" class="view hidden"></section>
+    <section id="view-clients" class="view hidden"></section>
+    <section id="view-factures" class="view hidden"></section>
+    <section id="view-parametres" class="view hidden"></section>
+  </main>
+
+  <nav class="mobile-nav">
+    <button class="nav active" data-view="dashboard">Accueil</button>
+    <button class="nav" data-view="temps">Temps</button>
+    <button class="nav" data-view="clients">Clients</button>
+    <button class="nav" data-view="factures">Factures</button>
+    <button class="nav" data-view="parametres">Reglages</button>
+  </nav>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card" id="modalCard"></div>
+  </div>
+  <div id="toast" class="toast hidden"></div>
+  <script src="/static/app.js?v=6"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/static/sw.js").catch(function () {});
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#16487a" />
+  <title>A-fid gestion — Connexion</title>
+  <link rel="stylesheet" href="/static/style.css?v=6" />
+  <style>
+    body { display:block; background:#16487a; }
+    .login-wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
+    .login-card { width:min(420px,100%); background:#fff; border-radius:18px; padding:28px 24px; }
+    .login-card img { height:56px; }
+    .login-card h1 { margin:12px 0 6px; font-size:22px; }
+    .login-card p { color:#6b645c; margin:0 0 16px; }
+    .login-card input { width:100%; padding:10px 12px; border:1px solid #d5deea; border-radius:10px; }
+    .login-card button { width:100%; margin-top:14px; }
+    .err { color:#8b2e2e; min-height:20px; font-size:14px; }
+  </style>
+</head>
+<body>
+  <div class="login-wrap">
+    <form class="login-card" id="form">
+      <img src="/static/logo-sidebar.png?v=3" alt="A-Fid" />
+      <h1>A-fid gestion</h1>
+      <p>Entrez le mot de passe du serveur pour acceder aux heures et factures.</p>
+      <label>Mot de passe</label>
+      <input id="password" type="password" autocomplete="current-password" />
+      <div class="err" id="err"></div>
+      <button class="btn" type="submit">Se connecter</button>
+    </form>
+  </div>
+  <script>
+    document.getElementById("form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const err = document.getElementById("err");
+      err.textContent = "";
+      try {
+        const res = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ password: document.getElementById("password").value })
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || "Echec");
+        location.href = "/";
+      } catch (ex) {
+        err.textContent = ex.message;
+      }
+    });
+  </script>
+</body>
+</html>
